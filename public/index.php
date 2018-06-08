@@ -1,10 +1,4 @@
 <?php 
-
-        if($_SERVER['HTTP_HOST']=="localhost"){
-            define("PUB", '/' . "citizen" . '/');
-        } else {
-            define("PUB", DIRECTORY_SEPARATOR);
-        }
 	define("ROOT", dirname(__DIR__) . DIRECTORY_SEPARATOR);
 	define("APP", ROOT . 'application' . DIRECTORY_SEPARATOR);
 	

@@ -15,6 +15,7 @@ class Db_Connect {
                 return $this->connection;
             }
         }
+        return $this->connection;
     }
 
     //SET CONNECTION
