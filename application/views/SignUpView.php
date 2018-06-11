@@ -81,7 +81,7 @@
 						<button type="button" class="btn btn-primary btn-lg btn-block signup-button">Register</button>
 					</div>
 					<div class="login-register">
-						<a href="index.php">Login</a>
+						<a href="login">Already have an account?</a>
 						</div>
 				</form>
 			</div>

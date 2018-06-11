@@ -19,12 +19,27 @@ class UserController {
             http_response_code(400);
             exit();
         }
+        
         $this->result_array = $this->model->login($_POST['username'], $_POST['username'],$_POST['password']);
-        $this->result_array['remember'] = (isset($_POST['remember']))?true:false;
+        if($this->result_array['code'] == 200){
+            //loging in
+            $_SESSION['user_id']    =   $this->result_array['data']['id'];
+            $_SESSION['name']       =   $this->result_array['data']['name'];
+            $_SESSION['username']   =   $this->result_array['data']['username'];
+            $_SESSION['email']      =   $this->result_array['data']['email'];
+            $this->result_array['url'] = "http://localhost/webchatapp/login";
+        }
+        //$this->result_array['remember'] = (isset($_POST['remember']))?true:false;
         echo json_encode($this->result_array);
     }
 
     public function signup(){
+
+        if(isset($_SESSION['user_id'])){
+            header("Location: ". PUBLIC_FOLDER . "messages");
+            exit();
+        }
+
         if ($_SERVER['REQUEST_METHOD'] != "POST"){
             http_response_code(400);
             exit();
@@ -65,12 +80,27 @@ class UserController {
 
     }
 
-    public function signout(){
+    public function status(){
+        if(isset($_SESSION['user_id'])){
+            $this->result_array['url'] = "http://localhost/webchatapp/messages";
+        }
+        echo json_encode($this->result_array);
+        exit();
+    }
 
+    public function signout(){
+        session_destroy();
+        $this->result_array['url'] = "http://localhost/webchatapp/login";
+        echo json_encode($this->result_array);
+        exit();
     }
 
     public function deleteUser(){
-
+        if(isset($_SESSION['user_id'])){
+            if($this->model->deleteUser($_SESSION['user_id'])){
+                $this->signout();
+            }
+        }
     }
 
 

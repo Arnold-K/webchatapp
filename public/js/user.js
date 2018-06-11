@@ -1,7 +1,17 @@
 /* -- SIGN IN -- */
+var formData
 $('.form-signin').on("submit", function(event){
     event.preventDefault();
-    var formData = $('.form-signin').serializeArray();
+    formData = $('.form-signin').serializeArray();
+    if(formData[0].value.length<5){
+        $("p[data-message]").text("Username: more than 5 letters.");
+        return;
+    }
+    if(formData[1].value.length<8){
+        $("p[data-message]").text("Password: more than 7 letters.");
+        return;
+    }
+    
     $.post( "/webchatapp/api/user/signin", formData , function(data) {
         if(data.code == 404){
             console.log("user not found");
@@ -9,23 +19,25 @@ $('.form-signin').on("submit", function(event){
             return false;
         }
         $("p[data-message]").text("");
-        let id          = data.id
-        let email       = data.email;
-        let last_login  = data.last_login_at;
-        let name        = data.name;
-        let role        = data.role;
-        let updated_at  = data.updated_at;
-        let username  = data.username;
+        // let id          = data.id
+        // let email       = data.email;
+        // let last_login  = data.last_login_at;
+        // let name        = data.name;
+        // let role        = data.role;
+        // let updated_at  = data.updated_at;
+        // let username    = data.username;
+        if(data.url){
+            window.location.assign(data.url);
+        }
     })
-        .done(function() {
+});
 
-        })
-        .fail(function() {
-            $("p[data-message]").text("Server is under construction!");
-        })
-        .always(function() {
-
-        });
+$(document).ready(function(){
+    $.get("/webchatapp/api/user/status", function(data){
+        if(data.url){
+            window.location.assign(data.url);
+        }
+    });
 });
 
 /* -- SIGN UP -- */

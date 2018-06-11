@@ -25,18 +25,19 @@ class UserModel {
 
         //  Credential missmatch
         if($result->num_rows == 0){
+            $this->message['code'] = 404;
             return $this->message;
         }
 
         //updating last login at
         $query = "INSERT INTO users (last_login_at) VALUES (current_timestamp)";
         $this->database->getConnection()->query($query);
-
+        $this->message['data'] = $result->fetch_assoc();
         //closing connection
         $this->database->closeConnection();
 
         //  Credentials correct = Login successfull
-        $this->message['data'] = $result->fetch_assoc();
+        $this->message['code'] = 200;
         return $this->message;
     }
 
@@ -63,6 +64,15 @@ class UserModel {
         return $this->message;
     }
 
+    public function deleteUser($id){
+        $query = "UPDATE users SET status=0 WHERE id=?";
+        $stmt = $this->database->getConnection()->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $this->database->closeConnection();
+        return true;
+    }
+
     private function emailExists($email){
         $query = "SELECT email FROM users WHERE email=? LIMIT 1";
         $stmt = $this->database->getConnection()->prepare($query);
@@ -84,4 +94,5 @@ class UserModel {
         
         return false;
     }
+    
 }

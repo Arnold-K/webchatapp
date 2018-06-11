@@ -30,8 +30,8 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Forgot the password?
+            <a href="/webchatapp/signup" class="forgot-password">
+                Don't have an account?
             </a>
             <p class="btn-danger" data-message="login"></p>
         </div><!-- /card-container -->
