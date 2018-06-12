@@ -26,6 +26,7 @@ class Db_Connect {
     //CLOSE CONNECTION
     public function closeConnection(){
         $this->connection->close();
+        $this->connection = null;
     }
 }
 

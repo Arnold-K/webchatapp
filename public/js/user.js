@@ -44,7 +44,33 @@ $(document).ready(function(){
 $(".signup-button").on("click", function(event){
     var formData = $("form").serializeArray();
     console.log(formData);
-    $.post( "/webchatapp/api/user/signup", formData , function(data) {
+    if(formData[0].value.length>50 || formData[0].value.length<5){
+        $('#message').text("Name 5-50 letters");
+        return;
+    }
+    if(formData[1].value.length>50){
+        $('#message').text("Email less than 50 letters");
+        return;
+    }
+    if(formData[2].value.length>50 || formData[2].value.length<5){
+        $('#message').text("Username 5-50 letters");
+        return;
+    }
+    if(formData[3].value.length>50 || formData[3].value.length<5){
+        $('#message').text("Password 8-50 letters");
+        return;
+    }
+    if(formData[4].value.length>50 || formData[4].value.length<5){
+        $('#message').text("Confirm passowrd 8-50 letters");
+        return;
+    }
+    if(formData[4].value !== formData[3].value){
+        $('#message').text("Passwords should be the same");
+        return
+    }
 
+    $.post( "/webchatapp/api/user/signup", formData , function(data) {
+        
     });
+    window.location.assign("/webchatapp/login");
 });

@@ -77,7 +77,7 @@
     padding: 3px 20px;
   }
      .member_list .chat-body {
-     margin-left: 47px;
+     /* margin-left: 47px; */
      margin-top: 0;
      }
      .top_nav {
@@ -152,14 +152,14 @@
     width: 100%;
   }
   .chat_area li {
-    padding: 14px 14px 0;
+    padding: 5px 0px 0;
   }
   .chat_area li .chat-img1 img {
-    height: 40px;
+    height: 5px;
     width: 40px;
   }
   .chat_area .chat-body1 {
-    margin-left: 50px;
+    margin-left: 5px;
   }
   .chat-body1 p {
     background: #fbf9fa none repeat scroll 0 0;

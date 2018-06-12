@@ -32,7 +32,7 @@
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="name" id="name" autocomplete="off"  placeholder="Enter your Name"/>
+								<input type="text" class="form-control" name="name" id="name" autocomplete="off"  placeholder="Enter your Name" required/>
 							</div>
 						</div>
 					</div>
@@ -42,7 +42,7 @@
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="email" id="email" autocomplete="o"  placeholder="Enter your Email"/>
+								<input type="text" class="form-control" name="email" id="email" autocomplete="o"  placeholder="Enter your Email" required/>
 							</div>
 						</div>
 					</div>
@@ -52,7 +52,7 @@
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="username" id="username" autocomplete="off"  placeholder="Enter your Username"/>
+								<input type="text" class="form-control" name="username" id="username" autocomplete="off"  placeholder="Enter your Username" required/>
 							</div>
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-								<input type="password" class="form-control" name="password" id="password" autocomplete="off"  placeholder="Enter your Password"/>
+								<input type="password" class="form-control" name="password" id="password" autocomplete="off"  placeholder="Enter your Password" required/>
 							</div>
 						</div>
 					</div>
@@ -72,7 +72,7 @@
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-								<input type="password" class="form-control" name="confirm" id="confirm" autocomplete="off"  placeholder="Confirm your Password"/>
+								<input type="password" class="form-control" name="confirm" id="confirm" autocomplete="off"  placeholder="Confirm your Password" required/>
 							</div>
 						</div>
 					</div>
@@ -80,9 +80,10 @@
 					<div class="form-group ">
 						<button type="button" class="btn btn-primary btn-lg btn-block signup-button">Register</button>
 					</div>
+					<p id="message" style="color: red"></p>
 					<div class="login-register">
 						<a href="login">Already have an account?</a>
-						</div>
+					</div>
 				</form>
 			</div>
 		</div>
